@@ -1,5 +1,8 @@
 // Require Modules
 const express = require('express');
+const morgan = require('morgan'); 
+
+
 const indexRouter = require('./routes/index');
 const skillsRouter = require('./routes/skills');
 
@@ -13,7 +16,19 @@ const app = express();
 app.set('view engine', 'ejs'); 
 
 // Mount Middleware (app.use)
+app.set('view engine', 'ejs');
 
+// add middleware below the above line of code
+app.use(function(req, res, next) {
+ console.log('Hello Intrepid Learner!');
+ // Add a time property to the req object
+ req.time = new Date().toLocaleTimeString();
+ next();
+});
+
+app.use(morgan('dev'));
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
 
 // Mount Routes
 app.use('/', indexRouter);
