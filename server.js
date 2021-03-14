@@ -10,13 +10,10 @@ const skillsRouter = require('./routes/skills');
 // Create the Express App
 const app = express();
 
-
 // Configure the App (app.set)
 
 // We'll use the ejs view engine
 app.set('view engine', 'ejs'); 
-
-
 
 // add middleware below the above line of code
 app.use(function(req, res, next) {

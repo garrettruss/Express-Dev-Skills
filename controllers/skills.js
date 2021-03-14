@@ -37,7 +37,6 @@ function edit(req, res) {
   const skill = Skill.getOne(req.params.id);
   res.render('skills/edit', { 
     skill,
-    // could be todo: todo,
     skillId: req.params.id,
    });
 }
