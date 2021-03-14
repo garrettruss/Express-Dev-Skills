@@ -1,6 +1,7 @@
 // Require Modules
 const express = require('express');
-const morgan = require('morgan'); 
+const morgan = require('morgan');
+const methodOverride = require('method-override'); 
 
 
 const indexRouter = require('./routes/index');
@@ -15,8 +16,7 @@ const app = express();
 // We'll use the ejs view engine
 app.set('view engine', 'ejs'); 
 
-// Mount Middleware (app.use)
-app.set('view engine', 'ejs');
+
 
 // add middleware below the above line of code
 app.use(function(req, res, next) {
@@ -29,6 +29,8 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
+// creates req.body -> {our form data}
+app.use(methodOverride('_method'));
 
 // Mount Routes
 app.use('/', indexRouter);
