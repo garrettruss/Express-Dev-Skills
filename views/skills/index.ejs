@@ -8,22 +8,25 @@
     <title>Express Skills</title>
 </head>
 <body>
+  <div class ="main">
     <h1>Skills as of <%= time %></h1>
-      <ul>
-    <% skills.forEach(function(skill, idx) { %>
-      <li>
-        <form action="/skills/<%= idx %>?_method=DELETE"
-        class="delete-form" method="POST">
-        <button type="submit">X</button>
-      </form>
-         <a href="/skills/<%= idx %>">
+    <a href="/">Home</a>
+    <ul>
+      <% skills.forEach(function(skill, idx) { %>
+        <li>
+          <form action="/skills/<%= idx %>?_method=DELETE"
+            class="delete-form" method="POST">
+            <button type="submit">X</button>
+          </form>
+          <a href="/skills/<%= idx %>">
             <%= skill.text %>
-        </a>
-          - 
-        <%= skill.done ? 'Done' : 'Not done' %>
-      </li>
-    <% }); %>
-  </ul>
-  <a href="/skills/new">Add Skill</a>
+          </a>
+            - 
+          <%= skill.done ? 'Done' : 'Not done' %>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/skills/new">Add Skill</a>
+  </div>
 </body>
 </html>
